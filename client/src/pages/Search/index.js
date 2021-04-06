@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import SearchForm from '../../componets/SearchForm'
 
 function Search(){
-    return <h1>hello world</h1>
+    const [search, setSearch] = useState('');
+
+    const handleInputChange = event =>{
+        setSearch(event.target.value);
+    }
+
+    return(
+        <SearchForm
+        handleInputChange={handleInputChange}
+        results={search}
+        />
+    )
 };
 
 export default Search;
