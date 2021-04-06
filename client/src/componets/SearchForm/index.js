@@ -1,11 +1,9 @@
 import React from 'react';
-import API from '../../utils/API'
 
-function Search(){
-    
+function SearchForm(){
     return(
         <h1>hello world</h1>
     );
 };
 
-export default Search;
+export default SearchForm;
