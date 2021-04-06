@@ -1,18 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchForm from '../../componets/SearchForm'
+import SearchResults from '../../componets/SearchResults'
+import API from '../../utils/API'
 
 function Search(){
-    const [search, setSearch] = useState('');
+    const [search, setSearch] = useState("Hacker News");
+    const [title, setTitle] = useState("")
+    const [author, setAuthor] = useState("")
+    const [url, setUrl] = useState("");
+
+    useEffect(() =>{
+        if(!search){
+            return;
+        }
+        API.searchTerms(search)
+            .then(res => {
+              console.log(res)
+              setTitle(res.data);
+              setAuthor(res.data);
+              setUrl(res.data)  
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [search]);
 
     
     const handleInputChange = event =>{
         setSearch(event.target.value);
-    }
-
-    const handleSubmit = event =>{
-        event.preventDefault();
-        alert('you have submited')
-        console.log(search)
     }
 
     return(
@@ -20,8 +36,13 @@ function Search(){
             <SearchForm
             handleInputChange={handleInputChange}
             results={search}
-            handleSubmit={handleSubmit}/>
+            />
             
+            <SearchResults
+            title={title}
+            author={author}
+            url={url}
+            />
         </div>
         
     )

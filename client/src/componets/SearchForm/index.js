@@ -14,8 +14,6 @@ function SearchForm(props){
                 placeholder='search hacker news'
                 id='term'
                 />
-                <button type='submit'
-                onClick={props.handleSubmit}>submit</button>
             </div>
         </form>
     );
