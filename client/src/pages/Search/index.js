@@ -4,15 +4,26 @@ import SearchForm from '../../componets/SearchForm'
 function Search(){
     const [search, setSearch] = useState('');
 
+    
     const handleInputChange = event =>{
         setSearch(event.target.value);
     }
 
+    const handleSubmit = event =>{
+        event.preventDefault();
+        alert('you have submited')
+        console.log(search)
+    }
+
     return(
-        <SearchForm
-        handleInputChange={handleInputChange}
-        results={search}
-        />
+        <div>
+            <SearchForm
+            handleInputChange={handleInputChange}
+            results={search}
+            handleSubmit={handleSubmit}/>
+            
+        </div>
+        
     )
 };
 
