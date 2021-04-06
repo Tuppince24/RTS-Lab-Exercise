@@ -1,8 +1,20 @@
 import React from 'react';
 
-function SearchForm(){
+function SearchForm(props){
     return(
-        <h1>hello world</h1>
+        <form>
+            <div>
+                <input
+                value={props.search}
+                onchange={props.handleInputChange}
+                name='term'
+                list='term'
+                type='text'
+                placeholder='search hacker news'
+                id='term'
+                />
+            </div>
+        </form>
     );
 };
 
