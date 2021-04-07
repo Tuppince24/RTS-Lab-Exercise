@@ -15,16 +15,21 @@ function Search(){
         }
         API.searchTerms(search)
             .then(res => {
-              console.log(res)
-              setTitle(res.data);
-              setAuthor(res.data);
-              setUrl(res.data)  
-
+              console.log(res.data)
+              setAuthor(res.data[1]);
+              setUrl(res.data[1])  
+              console.log("mu log" + res.data);
+              console.log(res.data.hits)
+              setTitle(res.data.hits.map(results => {return `${results.title}`;}))
+              console.log(setTitle)
+              
             })
             .catch(err => {
                 console.log(err);
             })
     }, [search]);
+
+    
 
     
     const handleInputChange = event =>{
